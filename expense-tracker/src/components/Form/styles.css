@@ -1,63 +1,81 @@
 /* Overall container styling */
 .form-container {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 20px auto;
-  font-family: Arial, sans-serif;
+  background-color: #ffffff; /* Brighter background for a cleaner look */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  max-width: 700px; /* Increased container width */
+  margin: 40px auto;
+  font-family: 'Poppins', Arial, sans-serif; /* Modern and clean font */
+  border: 1px solid #e0e0e0;
 }
 
 /* Form inputs styling */
+.form-container .form-group {
+  margin-bottom: 20px;
+}
+
 .form-container .form-group label {
   font-weight: 600;
   margin-bottom: 8px;
+  color: #333333; /* Slightly darker label color for better readability */
+  display: block; /* Ensure labels are on their own line */
 }
 
 .form-container .form-control {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding: 12px;
+  border-radius: 8px; /* Softer rounded corners */
+  border: 1px solid #cccccc;
+  padding: 14px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  color: #333333; /* Text color for inputs */
+  background-color: #f8f8f8; /* Subtle background for inputs */
+  transition: all 0.3s ease-in-out;
+  width: 100%; /* Full-width inputs */
+  max-width: 100%; /* Prevents breaking in larger containers */
+  box-sizing: border-box; /* Includes padding and border in width calculation */
 }
 
 /* Focus effect on form inputs */
 .form-container .form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #4caf50; /* Green accent for focus */
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3); /* Subtle glow */
+  background-color: #ffffff; /* Brighten input on focus */
 }
 
 /* Submit button styling */
 .submit-btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
+  padding: 12px 25px;
+  font-size: 18px; /* Slightly larger font for emphasis */
+  background-color: #4caf50; /* Modern green color */
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
-  width: 100%;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase; /* Make the button text stand out */
+  transition: all 0.3s ease;
+  width: 100%; /* Full-width button */
 }
 
 .submit-btn:hover {
-  background-color: #0056b3;
+  background-color: #388e3c; /* Darker green on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a slight shadow on hover */
 }
 
 /* Styling for placeholders */
 .form-container .form-control::placeholder {
-  color: #aaa;
+  color: #bbbbbb;
+  font-style: italic; /* Makes placeholders stand out as hints */
 }
 
 /* Responsive form layout */
 @media (max-width: 768px) {
   .form-container {
-    padding: 15px;
-    margin: 10px;
+    padding: 20px;
+    margin: 15px;
   }
 
   .submit-btn {
-    width: 100%;
+    width: 100%; /* Full-width button for smaller screens */
   }
 }
