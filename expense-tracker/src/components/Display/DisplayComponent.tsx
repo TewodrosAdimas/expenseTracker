@@ -1,10 +1,11 @@
 import React from "react";
-import "./styles.css"; // Import your custom styles
+import "./styles.css";
 
 interface Data {
   description: string;
   amount: number;
   category: string;
+  date: string; // Add date field
 }
 
 interface DisplayComponentProps {
@@ -27,6 +28,7 @@ const DisplayComponent: React.FC<DisplayComponentProps> = ({
             <th>Description</th>
             <th>Amount</th>
             <th>Category</th>
+            <th>Date</th> {/* Add Date header */}
             <th>Action</th>
           </tr>
         </thead>
@@ -36,6 +38,7 @@ const DisplayComponent: React.FC<DisplayComponentProps> = ({
               <td>{data.description}</td>
               <td>{data.amount}</td>
               <td>{data.category}</td>
+              <td>{data.date}</td> {/* Display the date */}
               <td>
                 <button
                   className="btn btn-danger"

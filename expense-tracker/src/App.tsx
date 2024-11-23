@@ -9,6 +9,7 @@ interface Data {
   description: string;
   amount: number;
   category: string;
+  date: string; // Add date field
 }
 
 const App: React.FC = () => {

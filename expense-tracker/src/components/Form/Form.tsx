@@ -1,83 +1,91 @@
 import React, { useState } from "react";
-import "./styles.css"; // Import your custom styles
-
-type Category = "Food" | "Transport" | "Utilities" | "Other";
-
-interface Data {
-  description: string;
-  amount: number;
-  category: Category;
-}
+import "./styles.css";
 
 interface FormComponentProps {
-  onSubmit: (data: Data) => void;
+  onSubmit: (data: {
+    description: string;
+    amount: number;
+    category: string;
+    date: string;
+  }) => void;
 }
 
 const FormComponent: React.FC<FormComponentProps> = ({ onSubmit }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState<number | "">("");
-  const [category, setCategory] = useState<Category>("Other");
+  const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (description && amount) {
-      const newData: Data = { description, amount: Number(amount), category };
-      onSubmit(newData);
-      setDescription("");
-      setAmount("");
-      setCategory("Other");
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!description || !amount || !category || !date) {
+      alert("Please fill in all fields.");
+      return;
     }
+
+    onSubmit({ description, amount: Number(amount), category, date });
+    setDescription("");
+    setAmount("");
+    setCategory("");
+    setDate("");
   };
 
   return (
-    <form className="container mt-4 custom-form" onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="description" className="form-label">
-          Description:
-        </label>
-        <input
-          id="description"
-          type="text"
-          className="form-control"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="amount" className="form-label">
-          Amount:
-        </label>
-        <input
-          id="amount"
-          type="number"
-          className="form-control"
-          value={amount}
-          onChange={(e) => setAmount(Number(e.target.value) || "")}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="category" className="form-label">
-          Category:
-        </label>
-        <select
-          id="category"
-          className="form-select"
-          value={category}
-          onChange={(e) => setCategory(e.target.value as Category)}
-          required
-        >
-          <option value="Food">Food</option>
-          <option value="Transport">Transport</option>
-          <option value="Utilities">Utilities</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <button type="submit" className="btn btn-primary custom-submit-button">
-        Submit
-      </button>
-    </form>
+    <div className="form-container">
+      <h2>Add New Entry</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Description:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Amount:</label>
+          <input
+            type="number"
+            className="form-control"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Category:</label>
+          <select
+            className="form-control"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          >
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Bills">Bills</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Date:</label>
+          <input
+            type="date"
+            className="form-control"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
