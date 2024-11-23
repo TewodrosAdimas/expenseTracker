@@ -38,8 +38,8 @@ const App: React.FC = () => {
       filtered = filtered.filter((data) => data.category === category);
     }
 
-    if (date) {
-      filtered = filtered.filter((data) => data.date === date);
+    if (date !== "all" && date !== "") {
+      filtered = filtered.filter((data) => data.date === date); // Filter by specific date
     }
 
     setFilteredData(filtered); // Update filtered data based on category and date

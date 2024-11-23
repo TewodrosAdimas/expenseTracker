@@ -21,7 +21,7 @@ const Filter: React.FC<FilterProps> = ({ categories, handleFilter }) => {
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const date = event.target.value;
     setSelectedDate(date);
-    handleFilter(selectedCategory, date); // Filter by category and selected date
+    handleFilter(selectedCategory, date === "" ? "all" : date); // Filter by category and selected date (or 'all')
   };
 
   return (
@@ -47,6 +47,16 @@ const Filter: React.FC<FilterProps> = ({ categories, handleFilter }) => {
         value={selectedDate}
         onChange={handleDateChange}
       />
+      {/* Add an "All Dates" option */}
+      <button
+        className="btn btn-secondary"
+        onClick={() => {
+          setSelectedDate(""); // Reset the date filter
+          handleFilter(selectedCategory, "all"); // Show all entries
+        }}
+      >
+        All Dates
+      </button>
     </div>
   );
 };
