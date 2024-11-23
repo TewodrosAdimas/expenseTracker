@@ -1,0 +1,27 @@
+/* Table custom styling */
+.table th, .table td {
+    text-align: center;
+  }
+  
+  .table td {
+    vertical-align: middle;
+  }
+  
+  .table .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .table .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  /* Total amount styling */
+  .total-amount {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  

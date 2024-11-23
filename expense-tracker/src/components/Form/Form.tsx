@@ -1,17 +1,32 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css"; // Import your custom styles
 
 type Category = "Food" | "Transport" | "Utilities" | "Other";
 
-const FormComponent: React.FC = () => {
+interface Data {
+  description: string;
+  amount: number;
+  category: Category;
+}
+
+interface FormComponentProps {
+  onSubmit: (data: Data) => void;
+}
+
+const FormComponent: React.FC<FormComponentProps> = ({ onSubmit }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState<number | "">("");
   const [category, setCategory] = useState<Category>("Other");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ description, amount, category });
+    if (description && amount) {
+      const newData: Data = { description, amount: Number(amount), category };
+      onSubmit(newData);
+      setDescription("");
+      setAmount("");
+      setCategory("Other");
+    }
   };
 
   return (
