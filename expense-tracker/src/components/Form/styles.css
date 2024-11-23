@@ -1,0 +1,40 @@
+/* Add custom styling to the form */
+.custom-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Label customization */
+  .custom-form label {
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  /* Customize inputs and select fields */
+  .custom-form input,
+  .custom-form select {
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .custom-form input:focus,
+  .custom-form select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Customize the submit button */
+  .custom-submit-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .custom-submit-button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
