@@ -1,40 +1,63 @@
-/* Add custom styling to the form */
-.custom-form {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Overall container styling */
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Form inputs styling */
+.form-container .form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-container .form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus effect on form inputs */
+.form-container .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Submit button styling */
+.submit-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for placeholders */
+.form-container .form-control::placeholder {
+  color: #aaa;
+}
+
+/* Responsive form layout */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
+    margin: 10px;
   }
-  
-  /* Label customization */
-  .custom-form label {
-    font-weight: bold;
-    color: #495057;
+
+  .submit-btn {
+    width: 100%;
   }
-  
-  /* Customize inputs and select fields */
-  .custom-form input,
-  .custom-form select {
-    border: 2px solid #ced4da;
-    border-radius: 5px;
-    transition: border-color 0.2s ease-in-out;
-  }
-  
-  .custom-form input:focus,
-  .custom-form select:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-  }
-  
-  /* Customize the submit button */
-  .custom-submit-button {
-    background-color: #007bff;
-    border-color: #007bff;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  .custom-submit-button:hover {
-    background-color: #0056b3;
-    border-color: #004085;
-  }
-  
+}

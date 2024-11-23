@@ -26,30 +26,36 @@ const Filter: React.FC<FilterProps> = ({ categories, handleFilter }) => {
 
   return (
     <div className="filter-container">
-      <label>Filter by Category:</label>
-      <select
-        className="form-control"
-        value={selectedCategory}
-        onChange={handleCategoryChange}
-      >
-        <option value="">All Categories</option>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
+      <div className="filter-group">
+        <label htmlFor="categorySelect" className="form-label"></label>
+        <select
+          id="categorySelect"
+          className="form-control"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+        >
+          <option value="">All Categories</option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <label>Filter by Date:</label>
-      <input
-        type="date"
-        className="form-control"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
-      {/* Add an "All Dates" option */}
+      <div className="filter-group">
+        <label htmlFor="dateInput" className="form-label"></label>
+        <input
+          type="date"
+          id="dateInput"
+          className="form-control"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </div>
+
       <button
-        className="btn btn-secondary"
+        className="btn btn-secondary reset-btn"
         onClick={() => {
           setSelectedDate(""); // Reset the date filter
           handleFilter(selectedCategory, "all"); // Show all entries
