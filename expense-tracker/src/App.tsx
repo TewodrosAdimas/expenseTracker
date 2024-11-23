@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import "./App.css";
 import FormComponent from "./components/Form/Form";
 import DisplayComponent from "./components/Display/DisplayComponent";
-import Filter from "./components/Filter/Filter"; // Import Filter component
+import Filter from "./components/Filter/Filter";
 
-// Define the type for the data
 interface Data {
   description: string;
   amount: number;
   category: string;
-  date: string; // Add date field
+  date: string;
 }
 
 const App: React.FC = () => {
   const [dataList, setDataList] = useState<Data[]>([]);
   const [filteredData, setFilteredData] = useState<Data[]>([]);
 
-  // Categories list for dropdown in Filter
   const categories = ["Food", "Transport", "Entertainment", "Bills", "Other"];
 
   // Function to handle form submission
@@ -32,22 +30,25 @@ const App: React.FC = () => {
     setFilteredData(newDataList); // Update filtered data after deletion
   };
 
-  // Handle category filtering
-  const handleFilter = (category: string) => {
+  // Handle both category and date filtering
+  const handleFilter = (category: string, date: string) => {
+    let filtered = dataList;
+
     if (category) {
-      setFilteredData(dataList.filter((data) => data.category === category));
-    } else {
-      setFilteredData(dataList); // Show all if no category is selected
+      filtered = filtered.filter((data) => data.category === category);
     }
+
+    if (date) {
+      filtered = filtered.filter((data) => data.date === date);
+    }
+
+    setFilteredData(filtered); // Update filtered data based on category and date
   };
 
   return (
     <div className="App">
       <FormComponent onSubmit={handleSubmit} />
-
-      {/* Add Filter component above the Display */}
       <Filter categories={categories} handleFilter={handleFilter} />
-
       <DisplayComponent dataList={filteredData} handleDelete={handleDelete} />
     </div>
   );

@@ -3,23 +3,34 @@ import "./styles.css";
 
 interface FilterProps {
   categories: string[];
-  handleFilter: (category: string) => void;
+  handleFilter: (category: string, date: string) => void;
 }
 
 const Filter: React.FC<FilterProps> = ({ categories, handleFilter }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
 
-  const onCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategory(event.target.value);
-    handleFilter(event.target.value);
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const category = event.target.value;
+    setSelectedCategory(category);
+    handleFilter(category, selectedDate); // Filter by category and current date
+  };
+
+  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const date = event.target.value;
+    setSelectedDate(date);
+    handleFilter(selectedCategory, date); // Filter by category and selected date
   };
 
   return (
     <div className="filter-container">
+      <label>Filter by Category:</label>
       <select
-        className="form-select"
+        className="form-control"
         value={selectedCategory}
-        onChange={onCategoryChange}
+        onChange={handleCategoryChange}
       >
         <option value="">All Categories</option>
         {categories.map((category, index) => (
@@ -28,6 +39,14 @@ const Filter: React.FC<FilterProps> = ({ categories, handleFilter }) => {
           </option>
         ))}
       </select>
+
+      <label>Filter by Date:</label>
+      <input
+        type="date"
+        className="form-control"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
     </div>
   );
 };
